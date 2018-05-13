@@ -1,0 +1,36 @@
+Node A
+
+    1. list of other nodes
+    2. ping all and get top 2 minimum response time node.
+    3. call cmd exe:
+        PreStep:
+            run local date command store output before call on next node
+        Action: 
+            send above output to node and run below steps.
+
+            a. first run date command and count time diff
+            b. check ntpdate service is running.
+            c. check /etc/ntp.conf file and get all ntp server list.
+            d. run date command and get output.
+            c. return time diff, ntp server status, ntp server list and date command output
+
+
+conf/
+    timeSync.yaml
+cmd/
+    cmd.go
+    remote_cmd.go   -> list of cmd execute on remote nodes
+    utils.go        ->
+                        PingAll()
+                        calculateTop2()
+                        status()
+
+
+    
+
+data/
+    status.txt  ->  last PingAll
+                    node    ping_time   send_time   receve_time datetime   timediff    service_status  ntp_severs
+
+
+
