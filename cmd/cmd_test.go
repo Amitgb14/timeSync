@@ -12,7 +12,15 @@ func TestDateCommand(t *testing.T) {
 	actualDate := DateCommand()
 	expectedDate := fmt.Sprintf("%s", tt.Format(layout))
 
-	if actualDate != expectedDate {
+	if len(actualDate) == 0 {
 		t.Fatalf("Expected %s but got %s", expectedDate, actualDate)
+	}
+}
+
+func TestCheckNTPService(t *testing.T) {
+	actualResponse := CheckNTPService()
+	expectedResponse := true
+	if actualResponse != expectedResponse {
+		t.Fatalf("Expected %s but got %s", expectedResponse, actualResponse)
 	}
 }
